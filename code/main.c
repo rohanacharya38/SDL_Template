@@ -30,6 +30,15 @@ int main(int argc, char **argv)
     SDL_Window *window = SDL_CreateWindow("Window", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, 0);
     SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
     SDL_Texture *img_texture = load_img("../misc/font.png", renderer);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    const int display_text_len = strlen(display_str);
+    /*We are setting up the values for all rectangels in sRects Array*/
+    array_scramble();
+>>>>>>> afedd47 (fixed build.ps1)
+=======
+>>>>>>> 4be433e (Edited main.c)
     bool is_running = true;
     SDL_Event event;
     while (is_running)
