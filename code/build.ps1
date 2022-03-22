@@ -3,7 +3,7 @@ if(!(Test-Path("..\bin")))
         New-Item -Itemtype Directory "..\bin"
 }
 $source_name = "..\code\main.c"
-$executable_name = "sort_viz.exe"
+$executable_name = "main.exe"
 $lib_path ="..\lib\"
 $include_path ="..\include"
 
