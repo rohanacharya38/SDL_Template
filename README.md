@@ -1,3 +1,3 @@
-# Sorting
-Attempt to visualize sorting methods in C using SDL
+# Template
+Template repo for projects using SDL
 For buid script: code->build.ps1
