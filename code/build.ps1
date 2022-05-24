@@ -18,5 +18,5 @@ if(!(Test-Path("SDL2.dll")))
 
 # cl /MD $source_name /Fe$executable_name $compiler_flags /I$include_path /link /LIBPATH:$lib_path $libraries $linker_flags /SUBSYSTEM:console
 # cl $source_name /Fe$executable_name $compiler_flag
-# clang -g  -I..\include\  -L..\lib\ -l libcurl-d.lib  $source_name -o $executable_name $compiler_flags
+# clang -g  -I..\include\  -L..\lib\ -l $libraries  $source_name -o $executable_name $compiler_flags
 cl  $source_name /Fe$executable_name $compiler_flags /I$include_path /link /LIBPATH:$lib_path $libraries /SUBSYSTEM:CONSOLE
