@@ -10,6 +10,7 @@ const char *pwsh_string = "if(!(Test-Path(\"..\\bin\")))\n\
 }\n\
 if(!(Test-Path(\"..\\msvc\")))\n\
 {\n\
+        echo \"Downloading SDL\"\
         New-Item -Itemtype Directory \"..\\msvc\"\n\
         $SDL2 = \"https://www.libsdl.org/release/SDL2-devel-2.0.12-VC.zip\"\n\
         Push-Location ..\\msvc\n\
@@ -48,6 +49,7 @@ cl  $source_name /Fe$executable_name $compiler_flags /I$include_path /link /LIBP
 const char *gcc_win_str = "#download sdl2 for gcc\n\
 if(!(Test-Path(\"..\\gcc\")))\n\
 {\n\
+echo \"Downloading SDL\"\
 New-Item -Itemtype Directory \"..\\gcc\"\n\
 $SDL2 = \"https://www.libsdl.org/release/SDL2-devel-2.0.12-mingw.tar.gz\"\n\
 Push-Location ..\\gcc\n\
@@ -126,28 +128,27 @@ int main()
     FILE *script = fopen("../code/build.ps1", "w");
     fwrite(pwsh_string, 1, strlen(pwsh_string), script);
     fclose(script);
-    printf("If you haven't run a powershell script before, the powershell execution policy might be restricted.To Unrestrict follow this steps:\n1.Start Powershell as\ Administrator 2.Input the command `Set-ExecutionPolicy -ExecutionPolicy Unrestricted` without the backticks.\n3.Run the script build.ps1(No administrator required");
-    system("echo powershell -ExecutionPolicy Bypass -File ../code/build.ps1 &");
+    printf("If you haven't run a powershell script before, the powershell execution policy might be restricted.To Unrestrict follow this steps:\n1.Start Powershell as " "Administrator\n2.Input the command `Set-ExecutionPolicy -ExecutionPolicy Unrestricted` without the backticks.\n3.Run the script build.ps1(No administrator required)");
 #elif __GNUC__
     //if windows and gcc compiler
     FILE *script = fopen("../code/buildgcc.ps1", "w");
     fwrite(gcc_win_str, 1, strlen(gcc_win_str), script);
     fclose(script);
-    printf("If you haven't run a powershell script before, the powershell execution policy might be restricted.To Unrestrict follow this steps:\n1.Start Powershell as\ Administrator 2.Input the command `Set-ExecutionPolicy -ExecutionPolicy Unrestricted` without the backticks.\n 3.Run the script buildgcc.ps1(No administrator required");
-    system("powershell -ExecutionPolicy Bypass -File ../code/buildgcc.ps1 &");
+    printf("If you haven't run a powershell script before,the powershell execution policy might be restricted.To Unrestrict follow this steps:\n1.Start Powershell as" "Administrator\n2.Input the command `Set-ExecutionPolicy -ExecutionPolicy Unrestricted`without the backticks.\n3.Run the script buildgcc.ps1(No administrator required)");
+
 #endif
 #elif __linux__
     printf("Its assumed you already have sdl package from package manager");
     FILE *script = fopen("../code/build.sh", "w");
     fwrite(bash_string, 1, strlen(bash_string), script);
     fclose(script);
-    system("bash ../code/build.sh &");
+
 #elif __APPLE__
     printf("Its assumed you already have sdl package from package manager");
     FILE *script = fopen("../code/build.sh", "w");
     fwrite(bash_string, 1, strlen(bash_string), script);
     fclose(script);
-    system("bash ../code/build.sh &");
+
 #endif
     /*
     free(data);
